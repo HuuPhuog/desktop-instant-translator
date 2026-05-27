@@ -1,3 +1,4 @@
+// Trigger rebuild with new app icons
 use base64::{engine::general_purpose, Engine as _};
 use enigo::{Direction, Enigo, Key, Keyboard, Settings};
 use screenshots::Screen;
@@ -31,7 +32,7 @@ fn simulate_copy() -> Result<String, String> {
         .key(Key::Control, Direction::Press)
         .map_err(|e| format!("Failed Ctrl Press: {:?}", e))?;
     enigo
-        .key(Key::Unicode('c'), Direction::Click)
+        .key(Key::C, Direction::Click)
         .map_err(|e| format!("Failed C Click: {:?}", e))?;
     enigo
         .key(Key::Control, Direction::Release)

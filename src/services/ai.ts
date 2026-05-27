@@ -69,7 +69,10 @@ Analyze the input English text, which may contain OCR artifacts.
 
 Detect if this is a Reading Set (passage + multiple choice questions):
 - If YES: set isReadingSet=true, extract passageText, parse readingQuestions with correctAnswer as single letter A/B/C/D only.
-- If NO: set isReadingSet=false, fill ipaPronunciation, grammarBreakdown, vocabularyExplanation, exampleUsage, contextualExplanation.
+- If NO: 
+  - Set isReadingSet=false.
+  - Fill ipaPronunciation, grammarBreakdown, vocabularyExplanation, exampleUsage, contextualExplanation.
+  - CRITICAL QUESTION SOLVING RULE: If the input text is a multiple-choice question (e.g. contains options like A/B/C/D) or a fill-in-the-blank question (e.g. contains "______"), you MUST solve the question. State the correct answer clearly at the beginning of "contextualExplanation" (e.g., "🎯 Đáp án đúng: [Lựa chọn đúng] - [Giải thích ngắn gọn]") and include a card in "grammarBreakdown" starting with "🎯 Đáp án đúng" to explain why it is correct.
 
 Provide analysis in ${targetLang === "vi" ? "Vietnamese" : "English"}.
 Response MUST strictly follow the provided JSON schema.`;
